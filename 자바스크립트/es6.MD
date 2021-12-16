@@ -168,7 +168,7 @@ const arr = () => const x=1; // ?
 const arr = () => {return const x=1;}; //?
 ```
 
-객체 리터널 반환한느 경우 객체 리터널 () 감싸줘야함
+**객체 리터널 반환하는** 경우 객체 리터널 () 감싸줘야함
 
 ```jsx
 const create = (id,content) => ({id,content});
@@ -272,16 +272,20 @@ es6전에선 이런 문제를 해결하기 위해서
 반환 전 this를 다른 값으로 옮기기
 
 map에 두번 째 인수로 add 메서드를 호출한 prifiexer 객체 가르키는 this 전달
--this 전달 방법
+
+### this 전달 방법
+
+```javascript
 add(arr) {
-=
+
 return arr.map(function (item) {
 return this.prefix + item;
 }, this);
 
-- prototype.bind메서드 써서 this 값 바인딩
+prototype.bind메서드 써서 this 값 바인딩
 
 es6에서는 화살표 함수 이용해서 this 문제 해결 방법
+```
 
 ```jsx
 class Prefixer {
