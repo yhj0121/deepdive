@@ -1,0 +1,304 @@
+## 자바 스크립트의 특징
+
+---
+
+1. **엄격한 타입체크를 하지 않는다**
+자바처럼 타입은 존재하지만 변수를 선언할때 타입에 대한 부분이 없다.
+변수에 저장되는 데이터는 타입이 존재한다
+    
+    var a;   //변수선언시 키워드는  var 하나이다. 어떤 타입을 저장할지 지정할 필요가 없다
+    
+
+**2.인터프리터 언어이다.**
+컴파일언어는 처음부터 끝까지 번역을 해서 문법적 오류를 모두 찾아서 문법적 에러가 없어야 실행된다.
+컴파일 에러메시지가 다양해서 하다보면 디버깅 속도가 빨라진다
+반드시 엄격한 타입체크및 변수선언이 있어야 한다
+
+**3.스크립트언어는 한준읽어서 그줄만 번역해서 문제가 없으면 바로 실행을 한다.**
+실행하다가 오류가 나면 멈춘다.
+메시지가 왜 나오는지 잘 모른다. 디버깅 속도가 잘 안는다
+변수를 미리 선언하지 않고도 사용가능하다
+대충 해도 돌아간다는 장점이 있다. 교육용언어로만 적합하다가 하다가 현재 python, nodejs 등등 실무에
+사용가능한 언어가 나오고 있다
+
+**4.브라우저에 있는 자바스크립트 엔진이 2008년에 독립을 한다.**
+
+ v8 엔진이 독립을 해서 자바처럼
+부라우저와 상관없이 일반적인 언어로 승격된다.(nodejs)
+nodejs 라는 언어를 별도로 설치해야 한다
+
+**정적프로토타입언어(컴파일러언어) : 자바**
+
+ex)
+
+int a;    컴파일시간에 변수의 타입이 결정된다. 그리고 안바뀐다
+String b;
+
+**인터프리터 언어는 변수선언을 안해도 된다.**
+ex)
+
+a =10; //수행도중에 타입이 확정된다. 동적프로토타입언어
+
+## HTML 자바스크립트 태그
+
+**input류 태그(input, select, textarea)
+1.name속성   서버로 값을 보내기 위해서 필요
+2.value속성  값**
+
+```html
+<input type="text" name="usernanme" value="홍길동">
+<input type="text" name="phone"      value="010-0000-1111">
+<input type="text" name="address"     value="서울시관악구">
+<input type="text" name="email"       [value="hong@hanmail.net](mailto:value=%22hong@hanmail.net)">
+```
+
+```jsx
+키         값
+username  임꺽정
+phone     010-0000-1112
+address   서울시관악구
+email     [hong@hanmail.net](mailto:hong@hanmail.net)
+```
+
+**input 이외의 태그들은  name과 value 속성이 없다.**
+
+****
+
+### 자바스크립트 태그
+
+id      --> 하나의 html  문서의 하나만 존재해야 한다
+class   --> 배열로 접근한다
+innerHTML  --> 태그안의 데이터를 읽고 쓰기
+
+### 객체에 접근할 함수
+
+document.getElementById("아이디명")  <- 한개만   innerHTML
+document.getElementsByName("name속성")    value
+document.getElementsByClassName("class속성") innerHTML
+document.getElementsByTagName("tag")  innerHTML
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--
+    input 태그에 대해서 자바스크립트로 접근하러면 id속성이나 name 속성 이용해야함
+    id로 접근할 떄는 무조건 단수 동일한 id 여러개 있어도 무조건 첫번쨰 하나만 접근 가능하다
+    name 접근 방법에 따라 단수로도 가능하고 복수로도 간으 동일한 이름 여러개 있을수 있다.
+
+    1.id 접근할떄
+    document - html 가르킴
+    document.getElementById("아이디명")
+    2.name의 경우는 form태그가 있는 경우 form 태그 없이 
+    사용하는 경우로 쪼개진다 
+    var obj = documentgetElementsName("이름속성")[0]
+
+    var obj = document.form의 name 속성 태그
+    <
+  -->
+  <input type="text" name="xvalue" id="xvalue">
+  <button type="button" onclick="displayvalue()">button</button>
+</body>
+</html>
+  <script>
+    //window = 브라우저 객체
+    //onload란 이벤트가 발생 호출된 함수를 주면
+    window.onload = functinon()
+    { 
+        var a = document.getElementById("xvalue");
+        //input 객체 자체
+        a.value= 1234; //객체의 value 속성에 값을 입력,
+                      //name태그류만 value속성 가짐
+    }
+
+    function displayvalue()
+          {
+            var obj = document.getElementsByName("xvalue");
+            alert(obj[0].value);
+          }
+  </script>
+```
+
+### 함수 표현식
+
+<aside>
+💡 let count = function(x){ }
+
+</aside>
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+//함수표현식 변수=함수(매개변수){
+//
+//}
+
+let add = function(a, b){
+    return a+b;
+}
+
+console.log( add( 4, 5) );
+
+add = function(a, b){
+    return a-b;
+}
+console.log( add( 4, 5) );
+
+let sub;
+sub = add;
+
+console.log( sub( 4, 5) );
+
+let a=[1,2,3,4,5,6,7,8,9,10];
+
+a.forEach( (x)=>{
+    console.log(x);
+});
+```
+
+### var let 차이
+
+---
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    //호이스팅 
+    name="홍길동"; //이 메모리 공간과   
+
+    var name;  //대부분은 다르다 자바스크립트는 위에 name과 공유한다. 
+
+    console.log(name);
+
+    if( true )
+    {
+        var name="임꺽정";  //if 문안에서 만들었지만 위에 name과 동일하게 받아들인다 
+        console.log(name);
+    }
+
+    console.log(name);
+    var name;
+    //let name;  //호이스팅을 읽으키지 않는다. 이미 있는 변수를 왜 또 만드느냐 
+    if( true )
+    {
+        let name="장길산";  //이 지역에서만 변수가 존재한다 
+        console.log(name);
+    }
+    console.log(name);
+    
+</script>
+```
+
+var는 호이스팅이 일어나고 let은 호이스팅이 일어나지 않는다.
+
+### 자바 자바스크립트
+
+**자바**
+
+> 함수는 변수다 - 자바는 해당되지 않는다
+**자바는 변수에 함수를 직접 저장할 수 없다. -> 인터페이스**
+> 
+
+```java
+interface ICalc              class Test  implements ICalc
+{                            {
+@Override
+int add();                   int add(){            }
+@Override
+int sub();                   int sub(){            }
+int div() {}
+}                            }
+
+**int add();    ===> void add();    오버라이딩이 성립되지 않는다**
+이 오류를 컴파일 단계에 체크하고 싶다.
+```
+
+@Override : 내가 부모클래스로부터 상속받은 기능중에 맘에 안들어서 다시 정의를 하는데
+자바는 함수의 이름뿐만아니라 매개변수나 반환등의 내용까지 똑같아야 한다
+
+```java
+ICalc                   ICalc icalc = new Test();
+&add : Test라는 객체의 add 함수 주소가 들어간다
+&sub : Test라는 객체의 sub 함수 주소가 들어간다
+icalc.div(); //불가능  add, sub만 가능하다.
+```
+
+**자바는 인터페이스를 이용해서 람다를 구성했다**
+
+함수형 언어 : 함수주소를 변수에 저장할 수 있다
+그런데  C나 자바 같은 경우에는 타입을 엄격하게 체크하기 때문에
+내가 함수를 저장하는 변수가 되려면 변수 선언방식이 아주 독특하다
+
+**자바스크립트**
+
+자바스크립트는 변수 선언을 안해도 된다.
+
+```java
+funcion add(x, y){
+return x+y;
+}
+
+calc = add; //변수에 함수를 저장한다
+
+console.log( add(5,3) );
+console.log( calc(5,3) );
+```
+
+```java
+const fs = require('fs');
+
+//동기식 파일 읽기 파일모두 읽고 파일 내용 반환
+//파일읽을떄까지 함수 리턴안함
+// 파일 크기 크면 아무것도못하고 기다림
+var data = fs.readFileSync("./문제1.html",'utf-8');
+console.log(data);
+console.log("_________________완료_________________");
+
+//비동기 경우 일의 시작시점과 종료시점이 달라서
+//용량이큰파일 읽거나 네트워크 작업시 많이 사용 언제올지모름 시간이 많이걸림
+//readfile 시스템한테 파일 읽어 바로 끝낸다 반환값 받아받지ㅏ임 아직 파일 읽지않음
+//첫번쨰 인자 파일명
+//두번째 인코딩
+//세번째 콜백 파일 다 읽고 나면 시스템 호출 호출자가 시스템이 함수에 전달될 매개변수 정해져있음
+//첫번쨰 에러객제 두번쨰 파일
+
+//2 함수 표현식
+fs.readFile('./문제1.html', 'utf-8',function(err,data){
+  console.log(data);
+
+})
+console.log("----------------완료------------------")
+//3 화살표 함수
+fs.readFile('./문제1.html', 'utf-8',(err,data)=>{
+  console.log(data);
+```
