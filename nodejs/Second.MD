@@ -70,6 +70,4 @@
 
 **BUT노드는 서버를 구성할수 있게 하는 모듈을 제공**
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/743bad29-cc03-4168-856c-047835f14e81/Untitled.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2ab75fd4-a468-4bab-a55c-68addcb08dea/Untitled.png)
